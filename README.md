@@ -1,5 +1,5 @@
 # Custom-CMS-like-Wordpress
-Custom CMS fully responsive
+Custom Responsive CMS 
 
 - This is a project for a Custom CMS
 - For front end we will use HTML5/CSS3, Javascript/Jquery, Bootstrap and for back end PHP/Mysql
