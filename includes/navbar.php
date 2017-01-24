@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Start Bootstrap</a>
+            <a class="navbar-brand" href="#">CMS by George Tourtsinakis</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -20,7 +20,7 @@
 
                 <?php
 
-
+                //All categories from db
                 $query = "SELECT * FROM categories";
                 $all_categories_query = mysqli_query($dbconnect,$query);
 
