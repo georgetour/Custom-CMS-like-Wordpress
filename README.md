@@ -8,6 +8,7 @@ comments and many more features that you see in Wordpress/other CMS
 
 
 # Structure
+Explanation for each file so we understand what every folder does:
 - admin - The layout for the admin area will be inserted here
 - css - Nothing strange our css
 - database tables - You can find the tables that will be used so you just create a new database, import them and connect to your DB
