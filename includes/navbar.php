@@ -1,4 +1,3 @@
-<?php include 'db_connect.php'; ?>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -33,7 +32,7 @@
                 }
 
                 ?>
-
+                <li><a href='admin'>Admin</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
