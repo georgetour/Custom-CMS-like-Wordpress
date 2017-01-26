@@ -1,5 +1,14 @@
 <?php
 
+//Confirming the query else die and show error
+function confirm($query){
+    global $dbconnect;
+    if(!$query){
+        die("Query failed".mysqli_error($dbconnect));
+    }
+
+}
+
 
 //Insert new category in our DB
 function insertCategories(){
