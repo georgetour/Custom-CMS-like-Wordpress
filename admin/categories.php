@@ -36,10 +36,9 @@
                     <form method="post">
                         <div class="form-group">
                             <label for="cat_title">Add category</label>
-
                             <input id="cat_title" type="text" class="form-control" name="cat_title">
-
                         </div>
+
                         <div class="form-group">
                             <input class="btn btn-primary" type="submit" name="submit" value="Add category">
 
@@ -50,7 +49,7 @@
                     <?php
                         //Show only if we click the edit
                         if(isset($_GET['edit'])){
-                            include 'includes/update-categories.php';
+                            include 'includes/edit-categories.php';
                         }
                     ?>
                     

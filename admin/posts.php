@@ -29,6 +29,8 @@
                             echo "Posts";
                         }else if($source=='add-post'){
                             echo "Add post";
+                        }else if($source=='edit-post'){
+                            echo "Edit post";
                         }
 
                         ?>
@@ -38,25 +40,18 @@
 
 
 
-                    //Show dynamically the page we want without refreshing
+                    //According to GET source value we will get the page
                     switch ($source){
                         case 'add-post';
                             include 'includes/add-post.php';
                             break;
 
-                        case '2';
-                            echo "hello2";
-                            break;
-
-                        case '3';
-                            echo "hello3";
+                        case 'edit-post';
+                            include 'includes/edit-post.php';
                             break;
 
                         default:
-
                             include 'includes/view-all-posts.php';
-
-                            //code here
                             break;
                     }
 

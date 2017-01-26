@@ -1,5 +1,3 @@
-<!--Add post form-->
-
 <?php
 if(isset($_POST['create_post'])){
 
@@ -44,14 +42,14 @@ if(isset($_POST['create_post'])){
     $create_post_query = mysqli_query($dbconnect,$query);
 
     //Confirming the query else die and show error from functions
-    confirmQuery($create_post_query);
+    confirm($create_post_query);
 
 
 
 }
 
 ?>
-
+<!--Add post form-->
 <form action="" method="post" enctype="multipart/form-data"><!--enctype multipart encodes the form differently if we have to upload files etc-->
 
     <div class="form-group">

@@ -1,16 +1,16 @@
 <?php
 
-//Confirming the query else die and show error
+//==============Confirming the query else die and show error===============
 function confirm($query){
     global $dbconnect;
     if(!$query){
-        die("Query failed".mysqli_error($dbconnect));
+        die("Query failed ".mysqli_error($dbconnect));
     }
 
 }
 
 
-//Insert new category in our DB
+//==============Insert new category in our DB==============
 function insertCategories(){
     global $dbconnect;
 
@@ -35,7 +35,7 @@ function insertCategories(){
 }
 
 
-//Showing all categories in a table 
+//=============Showing all categories in a table ===================
 function showAllCategoriesTable(){
     global $dbconnect;
     
@@ -57,7 +57,7 @@ function showAllCategoriesTable(){
     
 }
 
-//Delete category 
+//==============Delete category ======================
 function deleteCategory(){
     global $dbconnect;
     
@@ -73,6 +73,75 @@ function deleteCategory(){
 }
 
 
+
+//===========Edit post===============
+function editPost(){
+    global $dbconnect;
+    global $url_post_id;
+
+    //Update query post
+    if(isset($_POST['edit_post'])) {
+        $post_author = $_POST['post_author'];
+        $post_title = $_POST['post_title'];
+        $post_status = $_POST['post_status'];
+
+        $post_image = $_FILES['post_image']['name'];
+        $post_image_temp = $_FILES['post_image']['tmp_name'];
+
+        $post_tags = $_POST['post_tags'];
+        $post_content = $_POST['post_content'];
+
+
+        //Don't let empty image in posts
+        if(empty($post_image)){
+            $query = "SELECT * FROM posts WHERE post_id = $url_post_id";
+            $select_image = mysqli_query($dbconnect,$query);
+
+            while($row = mysqli_fetch_assoc($select_image)) {
+
+                $post_image = $row['post_image'];
+
+            }
+        }
+
+        move_uploaded_file($post_image_temp, "../images/$post_image");
+
+        $query = "UPDATE posts 
+              SET post_title = '{$post_title}',
+                  post_author = '{$post_author}',
+                  post_date = now(),
+                  post_status = '{$post_status}',
+                  post_image  = '{$post_image}',
+                  post_tags   = '{$post_tags}',
+                  post_content = '{$post_content}'
+                  WHERE post_id = {$url_post_id}
+               
+               ";
+        $edit_post = mysqli_query($dbconnect, $query);
+
+        confirm($edit_post);
+
+        header("Location: posts.php");
+
+    }
+}
+
+//=============Delete post================
+function deletePost(){
+    global $dbconnect;
+
+    if(isset($_GET['delete'])){
+        $url_post_id = $_GET['delete'];
+        $query = "DELETE FROM posts ";
+        $query .= "WHERE post_id = {$url_post_id} ";
+        $delete_query = mysqli_query($dbconnect, $query);
+
+        //Refresh the page header() is used to send a raw HTTP header
+        header("Location: posts.php");
+    }
+
+
+}
 
 
 
