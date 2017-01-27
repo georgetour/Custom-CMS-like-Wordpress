@@ -38,7 +38,8 @@ editPost();
     </div>
 
     <div class="form-group">
-        <select name="" id="">
+        <label for="post-category">Category</label>
+        <select name="post_category" id="post-category">
             <?php
 
             //Show select values dynamically
@@ -47,10 +48,12 @@ editPost();
 
             confirm($select_categories);
 
+            //Be careful here since we want to take the id but showing cat_title
             while($row = mysqli_fetch_assoc($select_categories)){
+                $cat_id = $row['cat_id'];
                 $cat_title =  $row['cat_title'];
 
-               echo "<option value=''>{$cat_title}</option>";
+               echo "<option value='$cat_id'>$cat_title</option>";
 
             }
             ?>
