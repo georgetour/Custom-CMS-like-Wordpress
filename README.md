@@ -17,4 +17,4 @@ Explanation for each file so we understand what every folder does:
 - includes - Files like connection to DB, navbar, footer etc so we don;t repeat ourselves and just call them where we want
 - js - Our javascript
 - static layout template - Here you can find the responsive static layout
-- index.php - Full content layout with templates
+- index.php - Main page that shows all posts and we can have our navigation
