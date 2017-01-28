@@ -1,5 +1,5 @@
 <?php include '../includes/db_connect.php' ?>
-<?php include 'admin-functions.php' ?>
+<?php include '../functions.php' ?>
 
 <?php
 //Improves performance with output buffering more here : http://stackoverflow.com/questions/2832010/what-is-output-buffering

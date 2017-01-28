@@ -1,4 +1,5 @@
 <?php include 'db_connect.php'?>
+<?php include 'functions.php'?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,6 +1,6 @@
 <?php
 
-    $query = "SELECT * FROM posts";
+    $query = "SELECT * FROM posts ";
     $all_posts_query = mysqli_query($dbconnect,$query);
 
     while($row = mysqli_fetch_assoc($all_posts_query)) {
@@ -10,6 +10,18 @@
         $post_date = $row['post_date'];
         $post_image = $row['post_image'];
         $post_content = substr($row['post_content'],0,100);
+        $post_status = $row['post_status'];
+
+
+        if($post_status !== 'published'){
+
+            echo "<h1>No posts</h1>";
+
+        }else{
+
+
+
+
 
     //Loop finishes at the end
 
@@ -41,4 +53,8 @@
 
 
 
-<?php } //End while loop ?>
+<?php } }//End while?>
+
+
+
+

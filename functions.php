@@ -84,8 +84,6 @@ function editPost(){
         $post_title = $_POST['post_title'];
         $post_category_id = $_POST['post_category'];
         $post_author = $_POST['post_author'];
-
-
         $post_status = $_POST['post_status'];
 
         $post_image = $_FILES['post_image']['name'];
@@ -147,6 +145,55 @@ function deletePost(){
 
 }
 
+
+//=======Delete comment from admin area================
+function deleteComment(){
+    global $dbconnect;
+
+    if(isset($_GET['delete'])){
+        $url_comment_id = $_GET['delete'];
+        $query = "DELETE FROM comments ";
+        $query .= "WHERE comment_id = {$url_comment_id} ";
+        $delete_query = mysqli_query($dbconnect, $query);
+
+        //Refresh the page header() is used to send a raw HTTP header
+        header("Location: comments.php");
+    }
+
+
+}
+
+//====Unapprove comment==========
+function unapproveComment(){
+    global $dbconnect;
+
+    if(isset($_GET['unapprove'])){
+        $url_comment_id = $_GET['unapprove'];
+        $query = "UPDATE comments SET comment_status = 'unapproved' ";
+        $query .= "WHERE comment_id = {$url_comment_id}";
+        $unapprove_comment_query = mysqli_query($dbconnect, $query);
+
+        //Refresh the page header() is used to send a raw HTTP header
+        header("Location: comments.php");
+    }
+    
+}
+
+//====Approve comment==========
+function approveComment(){
+    global $dbconnect;
+
+    if(isset($_GET['approve'])){
+        $url_comment_id = $_GET['approve'];
+        $query = "UPDATE comments SET comment_status = 'approved' ";
+        $query .= "WHERE comment_id = {$url_comment_id}";
+        $unapprove_comment_query = mysqli_query($dbconnect, $query);
+
+        //Refresh the page header() is used to send a raw HTTP header
+        header("Location: comments.php");
+    }
+
+}
 
 
 
