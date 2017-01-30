@@ -128,6 +128,60 @@ function editPost(){
     }
 }
 
+//===========Edit user===============
+function editUser(){
+    global $dbconnect;
+    global $url_user_id;
+
+    //Update query post
+    if(isset($_POST['edit_user'])) {
+        $user_first_name = $_POST['user_first_name'];
+        $user_last_name = $_POST['user_last_name'];
+        $user_role = $_POST['user_role'];
+        $username = $_POST['username'];
+
+       //$post_image = $_FILES['post_image']['name'];
+       // $post_image_temp = $_FILES['post_image']['tmp_name'];
+
+        $user_email = $_POST['user_email'];
+        $user_password = $_POST['user_password'];
+
+
+//        //Don't let empty image in posts
+//        if(empty($post_image)){
+//            $query = "SELECT * FROM posts WHERE post_id = $url_user_id";
+//            $select_image = mysqli_query($dbconnect,$query);
+//
+//            while($row = mysqli_fetch_assoc($select_image)) {
+//
+//                $post_image = $row['post_image'];
+//
+//            }
+//        }
+//
+//        move_uploaded_file($post_image_temp, "../images/$post_image");
+
+        $query = "UPDATE users 
+              SET user_first_name = '{$user_first_name}',
+                  user_last_name = '{$user_last_name}',
+                  user_role = '{$user_role}',
+                  username = '{$username}',
+                  user_email  = '{$user_email}',
+                  user_password   = '{$user_password}'
+                  WHERE user_id = {$url_user_id}
+               
+               ";
+        $edit_user = mysqli_query($dbconnect, $query);
+
+        confirm($edit_user);
+
+
+
+    }
+}
+
+
+//TODO MAKE THEM ONE FUNCTION WITH ONE PARAMETER
 //=============Delete post================
 function deletePost(){
     global $dbconnect;
@@ -162,6 +216,59 @@ function deleteComment(){
 
 
 }
+
+//====Change user role  to Admin==========
+function changeToAdmin(){
+    global $dbconnect;
+
+    if(isset($_GET['change_to_admin'])){
+        $url_user_id = $_GET['change_to_admin'];
+        $query = "UPDATE users SET user_role = 'admin' ";
+        $query .= "WHERE user_id = {$url_user_id} ";
+        $user_admin_query = mysqli_query($dbconnect, $query);
+
+        //Refresh the page header() is used to send a raw HTTP header
+        header("Location: users.php");
+    }
+
+}
+
+//====Change to user role Subscriber==========
+function changeToSubscriber(){
+    global $dbconnect;
+
+    if(isset($_GET['change_to_subscriber'])){
+        $url_user_id = $_GET['change_to_subscriber'];
+        $query = "UPDATE users SET user_role = 'subscriber' ";
+        $query .= "WHERE user_id = {$url_user_id}";
+        $user_subscriber_query = mysqli_query($dbconnect, $query);
+
+        //Refresh the page header() is used to send a raw HTTP header
+        header("Location: users.php");
+    }
+
+}
+
+
+
+//=======Delete USER from admin area================
+function deleteUser(){
+    global $dbconnect;
+
+    if(isset($_GET['delete'])){
+        $url_user_id = $_GET['delete'];
+        $query = "DELETE FROM users ";
+        $query .= "WHERE user_id = {$url_user_id} ";
+        $delete_query = mysqli_query($dbconnect, $query);
+
+        //Refresh the page header() is used to send a raw HTTP header
+        header("Location: users.php");
+    }
+
+
+}
+
+
 
 //====Unapprove comment==========
 function unapproveComment(){
