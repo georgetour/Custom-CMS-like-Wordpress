@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2017 at 05:30 PM
+-- Generation Time: Jan 30, 2017 at 05:07 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -61,7 +61,7 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`comment_id`, `comment_post_id`, `comment_author`, `comment_email`, `comment_content`, `comment_status`, `comment_date`) VALUES
-(7, 1, 'bee', 'bee@yahoo.gr', 'First comment', 'approved', '2017-01-28');
+(11, 6, 'George Tourtsinakis', 'bee@yahoo.gr', 'You rock', 'approved', '2017-01-28');
 
 -- --------------------------------------------------------
 
@@ -87,8 +87,32 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `post_category_id`, `post_title`, `post_author`, `post_date`, `post_image`, `post_content`, `post_tags`, `post_comment_count`, `post_status`) VALUES
-(1, 8, 'Hearthstone rank 9', 'George Tourtsinakis', '2017-01-28', 'Hearthstone Screenshot 01-23-17 23.04.57.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam hendrerit ligula at sapien volutpat, vitae mollis lacus sollicitudin. Praesent ac ultricies justo. Suspendisse viverra diam vel urna vehicula, eu rhoncus diam molestie. Praesent neque neque, vehicula vitae auctor et, tristique ac eros. Sed gravida enim at tempor egestas. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam sem ipsum, elementum non facilisis ut, ultrices ac eros. Cras a felis sit amet nibh euismod fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur suscipit nibh a sapien fringilla placerat. Donec ut aliquet lacus. Sed ut tortor lacus. Integer a velit nunc. Sed id lectus pulvinar, fermentum velit sed, congue magna. Nunc consectetur lorem sit amet nibh dictum rutrum. Vestibulum sed interdum sapien. ', 'hearthstone', 4, 'pendings'),
-(5, 8, 'HearthStone', 'George', '2017-01-27', '', 'Hello', 'hearthstone', 4, 'pending');
+(6, 2, 'Hearthstone rank 9', 'George Tourtsinakis', '2017-01-28', 'Hearthstone Screenshot 01-23-17 22.20.27.png', 'hearthstone, rank 9, priest', 'hearthstone, rank 9, priest', 1, 'published');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(3) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `user_password` varchar(255) NOT NULL,
+  `user_first_name` varchar(20) NOT NULL,
+  `user_last_name` varchar(50) NOT NULL,
+  `user_email` varchar(255) NOT NULL,
+  `user_image` text NOT NULL,
+  `user_role` varchar(50) NOT NULL,
+  `randSalt` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `user_password`, `user_first_name`, `user_last_name`, `user_email`, `user_image`, `user_role`, `randSalt`) VALUES
+(1, 'Bogo', '1234', 'George', 'Tourtsinakis', 'caterpilarbogo@gmail.com', '', 'admin', '');
 
 --
 -- Indexes for dumped tables
@@ -113,6 +137,12 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`post_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -125,12 +155,17 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `comment_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `post_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
