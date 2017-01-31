@@ -175,10 +175,64 @@ function editUser(){
 
         confirm($edit_user);
 
+        header("Location: users.php");
+    }
+}
 
+//===========Edit profile===============
+function editProfile(){
+    global $dbconnect;
+    global $session_username;
+
+    //Update query post
+    if(isset($_POST['edit_user'])) {
+        $user_first_name = $_POST['user_first_name'];
+        $user_last_name = $_POST['user_last_name'];
+        $user_role = $_POST['user_role'];
+        $session_username = $_POST['username'];
+
+        //$post_image = $_FILES['post_image']['name'];
+        // $post_image_temp = $_FILES['post_image']['tmp_name'];
+
+        $user_email = $_POST['user_email'];
+        $user_password = $_POST['user_password'];
+
+
+//        //Don't let empty image in posts
+//        if(empty($post_image)){
+//            $query = "SELECT * FROM posts WHERE post_id = $url_user_id";
+//            $select_image = mysqli_query($dbconnect,$query);
+//
+//            while($row = mysqli_fetch_assoc($select_image)) {
+//
+//                $post_image = $row['post_image'];
+//
+//            }
+//        }
+//
+//        move_uploaded_file($post_image_temp, "../images/$post_image");
+
+        $query = "UPDATE users 
+              SET user_first_name = '{$user_first_name}',
+                  user_last_name = '{$user_last_name}',
+                  user_role = '{$user_role}',
+                  username = '{$session_username}',
+                  user_email  = '{$user_email}',
+                  user_password   = '{$user_password}'
+                  WHERE username = '{$session_username}'
+               
+               ";
+        $edit_user = mysqli_query($dbconnect, $query);
+
+        confirm($edit_user);
+
+        header("Location: users.php");
 
     }
 }
+
+
+
 
 
 //TODO MAKE THEM ONE FUNCTION WITH ONE PARAMETER

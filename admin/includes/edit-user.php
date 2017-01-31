@@ -22,14 +22,13 @@ if(isset($_GET['edit-user'])){
 
 }
 
-//===========Edit user===============
-editUser();
+
 
 
 
 ?>
-<!--Add post form-->
-<form action="" method="post" enctype="multipart/form-data"><!--enctype multipart encodes the form differently if we have to upload files etc-->
+<!--Edit user-->
+<form  method="post" enctype="multipart/form-data"><!--enctype multipart encodes the form differently if we have to upload files etc-->
 
     <div class="form-group">
         <label for="user_first_name">First Name</label>
@@ -88,4 +87,7 @@ editUser();
     </div>
 
 
-</form><!--End Add post-->
+</form><!--End edit user-->
+<?php //===========Edit user===============
+editUser();
+?>
