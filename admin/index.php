@@ -19,7 +19,6 @@
                         <h1 class="page-header">
                             Welcome to admin 
                             <?php echo $_SESSION['user_first_name'];?>
-                            <small>Author</small>
                         </h1>
                     </div>
                 </div>
@@ -140,7 +139,28 @@
                         </div>
                     </div>
                 </div><!--End Widgets layout row-->
+                
+                
+                <?php
 
+                $query = "SELECT * FROM posts WHERE post_status ='draft'";
+                $select_all_draft_posts = mysqli_query($dbconnect,$query);
+                $post_draft_count = mysqli_num_rows($select_all_draft_posts);
+
+                $query = "SELECT * FROM comments WHERE comment_status ='unapproved'";
+                $unapproved_comments = mysqli_query($dbconnect,$query);
+                $unapproved_comments_count = mysqli_num_rows($unapproved_comments);
+
+
+                $query = "SELECT * FROM users WHERE user_role ='subscriber'";
+                $subscriber_users = mysqli_query($dbconnect,$query);
+                $count_subscribers = mysqli_num_rows($subscriber_users);
+
+
+                ?>
+
+
+                <!--Charts row-->
                 <div class="row">
                     <div id="columnchart_material" class="charts"></div>
 
@@ -153,12 +173,12 @@
 
                                 <?php
 
-                                $element_text = ['Active posts', 'Categories', 'Users' , 'Comments'];
-                                $element_count = [$count_posts, $count_categories, $count_users , $count_comments];
+                                $element_text = ['Active posts','Draft','Comments','Unapproved','Users','Subscribers','Categories'];
+                                $element_count = [$count_posts,$post_draft_count,$count_comments,$unapproved_comments_count, $count_users,$count_subscribers , $count_categories];
 
+                                $array_length = count($element_text);
 
-
-                                for($i = 0; $i < 4; $i++ ){
+                                for($i = 0; $i < $array_length; $i++ ){
 
                                     echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
 
@@ -185,10 +205,8 @@
                             chart.draw(data, options);
                         }
                     </script>
-                </div>
-
-
-
+                </div><!--End Charts row-->
+                
             </div>
             <!-- /.container-fluid -->
         </div>
