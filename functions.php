@@ -356,6 +356,21 @@ function approveComment(){
 
 }
 
+//According to parameter we will have everything from that table and how many rows it has
+
+function selectAll($whatTable){
+    global $dbconnect;
+    global $count_rows;
+    global $result_query;
+
+    $query = "SELECT * FROM $whatTable";
+    $result_query = mysqli_query($dbconnect,$query);
+
+    //How many rows
+    $count_rows = mysqli_num_rows($result_query);
+    
+}
+
 
 
 

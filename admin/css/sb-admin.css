@@ -17,6 +17,11 @@ body {
     }
 }
 
+.charts{
+
+    height: 500px;
+}
+
 #wrapper {
     padding-left: 0;
 }

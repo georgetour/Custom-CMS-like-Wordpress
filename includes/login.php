@@ -4,21 +4,22 @@
 
 session_start();
 
-if(isset($_POST['login'])){
+if(isset($_POST['login'])) {
 
-   $username = $_POST['username'];
-   $user_password = $_POST['user_password'];
+    $username = $_POST['username'];
+    $user_password = $_POST['user_password'];
 
     //Preventing mysql injection
-    $username = mysqli_real_escape_string($dbconnect,$username);
-    $user_password = mysqli_real_escape_string($dbconnect,$user_password);
+    $username = mysqli_real_escape_string($dbconnect, $username);
+    $user_password = mysqli_real_escape_string($dbconnect, $user_password);
 
     $query = "SELECT * FROM users WHERE username = '{$username}' ";
-    $select_user_query = mysqli_query($dbconnect,$query);
+    $select_user_query = mysqli_query($dbconnect, $query);
 
     confirm($select_user_query);
 
 
+}
 
 
 
@@ -49,7 +50,7 @@ if(isset($_POST['login'])){
 
 
 
-}
+
 
 
 
