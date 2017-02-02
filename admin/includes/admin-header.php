@@ -34,10 +34,14 @@ if(!isset($_SESSION['user_role'])){
     <title>SB Admin - Bootstrap Admin Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/sb-admin.css" rel="stylesheet" type="text/css">
+
+    <!--WYSIWYG HTML Editor-->
+    <link href="js/skins/lightgray/skin.min.css" rel="stylesheet" type="text/css">
+    <link href="js/skins/lightgray/content.min.css" rel="stylesheet" type="text/css">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -49,6 +53,9 @@ if(!isset($_SESSION['user_role'])){
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!--Google charts-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    
 
 </head>

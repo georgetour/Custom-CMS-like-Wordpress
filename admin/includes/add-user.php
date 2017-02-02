@@ -39,7 +39,7 @@ if(isset($_POST['create_user'])){
     //Confirming the query else die and show error from functions
     confirm($create_user_query);
 
-
+echo "User Created:" ." "."<a href='users.php'>View all users</a>";
 
 }
 

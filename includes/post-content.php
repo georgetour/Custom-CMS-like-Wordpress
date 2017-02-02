@@ -5,7 +5,7 @@
 
     if(isset($_GET['p_id'])){
 
-    $url_post_id = $_GET['p_id'];
+        $url_post_id = $_GET['p_id'];
     
     }
 

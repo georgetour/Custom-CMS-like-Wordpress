@@ -1,13 +1,15 @@
 <?php
 
-if(isset($_GET['p_id'])){
+if(isset($_GET['p_id'])) {
 
-  $url_post_id = $_GET['p_id'];
+    $url_post_id = $_GET['p_id'];
 
-$query = "SELECT * FROM posts WHERE post_id = $url_post_id";
+}
+
+$query = "SELECT * FROM posts WHERE post_id = {$url_post_id}";
 $select_posts_by_id = mysqli_query($dbconnect,$query);
 
-    confirm($select_posts_by_id);
+
 
     while($row = mysqli_fetch_assoc($select_posts_by_id)) {
         $post_id = $row['post_id'];
@@ -20,17 +22,23 @@ $select_posts_by_id = mysqli_query($dbconnect,$query);
         $post_comment_count = $row['post_comment_count'];
         $post_date = $row['post_date'];
         $post_content =$row['post_content'];
-    }
-}
 
-//Edits and updateS the post from functions
-editPost();
+
+
+    }
+
+
+    //Edits and updateS the post from functions
+    editPost();
+    confirm($select_posts_by_id);
+
+
 ?>
 
 
 
 <!--Edit post form-->
-<form action="" method="post" enctype="multipart/form-data"><!--enctype multipart encodes the form differently if we have to upload files etc-->
+<form  action="" method="post" enctype="multipart/form-data"><!--enctype multipart encodes the form differently if we have to upload files etc-->
 
     <div class="form-group">
         <label for="post_title">Post title</label>
@@ -66,9 +74,25 @@ editPost();
         <input id="post_author" type="text" class="form-control" name="post_author" value="<?php echo $post_author;?>">
     </div>
 
+
     <div class="form-group">
         <label for="post_status">Post Status</label>
-        <input id="post_status" type="text" class="form-control" name="post_status" value="<?php echo $post_status;?>">
+        <br>
+        <select  name="post_status" id="post_status">
+            <option value='<?php echo $post_status?>'><?php echo $post_status?></option>
+            <?php
+
+            if($post_status == 'published') {
+
+                echo "<option value='draft'>Draft</option>";
+
+            }else{
+                echo "<option value='published'>Published</option>";
+            }
+            ?>
+
+
+        </select>
     </div>
 
     <div class="form-group">
@@ -92,7 +116,7 @@ editPost();
     </div>
 
     <div class="form-group">
-        <input type="submit" class="btn btn-primary" name="edit_post" value="Edit Post">
+        <input  type="submit" class="btn btn-primary" name="edit_post" value="Edit Post">
     </div>
 
 

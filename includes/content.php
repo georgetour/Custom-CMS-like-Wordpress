@@ -12,15 +12,7 @@
         $post_status = $row['post_status'];
 
 
-        if($post_status !== 'published'){
-
-            echo "<h1>No posts</h1>";
-
-        }else{
-
-
-
-
+        if($post_status == 'published'){
 
     //Loop finishes at the end
 

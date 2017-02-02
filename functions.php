@@ -92,10 +92,11 @@ function editPost(){
         $post_tags = $_POST['post_tags'];
         $post_content = $_POST['post_content'];
 
+        move_uploaded_file($post_image_temp, "../images/$post_image");
 
         //Don't let empty image in posts
         if(empty($post_image)){
-            $query = "SELECT * FROM posts WHERE post_id = $url_post_id";
+            $query = "SELECT * FROM posts WHERE post_id = {$url_post_id} ";
             $select_image = mysqli_query($dbconnect,$query);
 
             while($row = mysqli_fetch_assoc($select_image)) {
@@ -105,25 +106,24 @@ function editPost(){
             }
         }
 
-        move_uploaded_file($post_image_temp, "../images/$post_image");
 
-        $query = "UPDATE posts 
-              SET post_title = '{$post_title}',
-                  post_author = '{$post_author}',
-                  post_category_id = '{$post_category_id}',
-                  post_date = now(),
-                  post_status = '{$post_status}',
-                  post_image  = '{$post_image}',
-                  post_tags   = '{$post_tags}',
-                  post_content = '{$post_content}'
-                  WHERE post_id = {$url_post_id}
-               
-               ";
+
+        $query = "UPDATE posts SET post_title = '{$post_title}',";
+        $query .= "post_author = '{$post_author}', ";
+        $query .= "post_category_id = '{$post_category_id}', ";
+        $query .= "post_date = now(), " ;
+        $query .= "post_status = '{$post_status}', ";
+        $query .= "post_image  = '{$post_image}', ";
+        $query .= "post_tags   = '{$post_tags}', ";
+        $query .= "post_content = '{$post_content}' ";
+        $query .= "WHERE post_id = {$url_post_id} ";
+
         $edit_post = mysqli_query($dbconnect, $query);
 
         confirm($edit_post);
 
-        
+        //Refresh the page
+        header("Location: posts.php?source=edit-post&p_id=$url_post_id");
 
     }
 }
