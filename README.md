@@ -10,7 +10,7 @@ comments and many more features that you see in Wordpress/other CMS
 # Structure
 Explanation for each file so we understand what every folder does:
 
-<h3>admin - The layout for the admin area will be inserted here </h3>
+<h3>admin - Everything for the admin area will be inserted here </h3>
 <ul>
     <li>css -> Our css for the admin area</li>
     <li>font-awesome -> Extra icons from font-awesome</li>
