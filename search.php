@@ -88,7 +88,7 @@
 
         </div>
 
-    </div><!End row-->
+    </div><!--End row-->
 
 
     <hr>
