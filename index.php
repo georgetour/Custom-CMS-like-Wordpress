@@ -24,5 +24,17 @@
         <!-- /.row -->
 
         <hr>
+    <?php
+    if(isset($_SESSION['username'])) {
+
+        if (isset($_GET['p_id'])) {
+
+            $url_post_id = $_GET['p_id'];
+
+            echo "<h1 href='admin/posts.php?source=edit_post&p_id={$url_post_id}'>Edit Post</h1>";
+
+        }
+    }
+    ?>
 
        <?php include "includes/footer.php"; ?>

@@ -13,7 +13,7 @@ ob_start();
 
 if(!isset($_SESSION['user_role'])){
 
-        header("Location: ../index.php");
+header("Location: ../index.php");
 
 }
 
@@ -56,6 +56,6 @@ if(!isset($_SESSION['user_role'])){
     <!--Google charts-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-    
+
 
 </head>
