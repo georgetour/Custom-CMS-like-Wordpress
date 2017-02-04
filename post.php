@@ -24,8 +24,9 @@
                 $comment_content = $_POST['comment_content'];
 
 
+                if(!empty($comment_author) && !empty($comment_email)&& !empty($comment_content)) {
 
-                $query = "INSERT INTO comments(comment_post_id,
+                    $query = "INSERT INTO comments(comment_post_id,
                             comment_author,
                             comment_email,
                             comment_content,
@@ -41,21 +42,26 @@
                              now()
                        )";
 
-                $create_comment_query = mysqli_query($dbconnect,$query);
+                    $create_comment_query = mysqli_query($dbconnect, $query);
 
-                confirm($create_comment_query);
+                    confirm($create_comment_query);
 
 
-                //Incrementing the post_comment_count whenever we have a post
-                $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 ";
-                $query .= "WHERE post_id = $url_post_id ";
+                    //Incrementing the post_comment_count whenever we have a post
+                    $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 ";
+                    $query .= "WHERE post_id = $url_post_id ";
 
-                $increment_comment_count = mysqli_query($dbconnect,$query);
+                    $increment_comment_count = mysqli_query($dbconnect, $query);
 
-                confirm($increment_comment_count);
+                    confirm($increment_comment_count);
+                }
+                else{
+
+                    echo "<script>alert('No empty fields allowed')</script>";
+
+                }
 
             }
-
             ?>
 
             <!-- Comments Form -->

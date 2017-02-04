@@ -79,6 +79,7 @@ if(isset($_POST['checkBoxArray'])){
         <th>Tags</th>
         <th>Comments</th>
         <th>Date</th>
+        <th>View post</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -128,7 +129,11 @@ if(isset($_POST['checkBoxArray'])){
             echo "<td>{$post_tags}</td>";
             echo "<td>{$post_comment_count}</td>";
             echo "<td>{$post_date}</td>";
-            //Adding in our url parameters so we can get data according to them
+
+
+            echo "<td><a href='../../post.php?p_id={$post_id}'>View post</a></td>";
+
+            //Adding in our url parameters so we have a link according to them
             echo "<td><a href='posts.php?source=edit-post&p_id={$post_id}'>Edit</a></td>";
             echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>" ;
             echo "</tr>";
