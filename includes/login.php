@@ -40,10 +40,10 @@ if(isset($_POST['login'])) {
        $_SESSION['user_last_name'] = $db_user_last_name;
        $_SESSION['user_role'] = $db_user_role;
 
-       // header("Location: ../admin");
+       header("Location: ../admin");
         
     }else{
-      //  header("Location: ../index.php");
+       header("Location: ../index.php");
     }
     }
 

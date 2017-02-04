@@ -42,6 +42,10 @@ if(isset($_POST['create_post'])){
     //Confirming the query else die and show error from functions
     confirm($create_post_query);
 
+    //Pulling the last created id
+    $url_post_id= mysqli_insert_id($dbconnect);
+
+    echo "<p class='bg-success'>Post Added. <a href='../post.php?p_id={$url_post_id}'>View Post </a> or <a href='posts.php'>Edit More Posts</a></p>";
 
 
 }
@@ -87,7 +91,13 @@ if(isset($_POST['create_post'])){
     
     <div class="form-group">
         <label for="post_status">Post Status</label>
-        <input id="post_status" type="text" class="form-control" name="post_status">
+        <div>
+            <select name="post_status" id="post_status">
+                <option value='draft'>Select Options</option>;
+                <option value='published'>Published</option>;
+                <option value='draft'>Draft</option>;
+            </select>
+        </div>
     </div>
 
     <div class="form-group">
