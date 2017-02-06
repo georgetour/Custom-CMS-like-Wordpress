@@ -41,7 +41,7 @@ Explanation for each file so we understand what every folder does:
     <li>users.php -> using switch and according what we GET from URL shows users/edit-user  </li>
 
 </ul>
-<h3>Root folder</h3>
+<h3>Root folder - All files except the admin folder</h3>
 - css - Nothing strange our css
 - database tables - You can find the tables that will be used so you just create a new database, import them and connect to your DB
 - fonts - Extra fonts
