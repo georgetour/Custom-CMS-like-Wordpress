@@ -135,7 +135,7 @@ if(isset($_POST['checkBoxArray'])){
 
             //Adding in our url parameters so we have a link according to them
             echo "<td><a href='posts.php?source=edit-post&p_id={$post_id}'>Edit</a></td>";
-            echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>" ;
+            echo "<td><a onclick=\"javascript: return confirm('Delete?')\" href='posts.php?delete={$post_id}'>Delete</a></td>" ;
             echo "</tr>";
 
      }

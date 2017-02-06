@@ -17,9 +17,64 @@ if(isset($_GET['edit-user'])){
         $username= $row['username'];
         $user_email = $row['user_email'];
         $user_password= $row['user_password'];
+
     }
 
+    //Update query post
+    if(isset($_POST['edit_user'])) {
+        $user_first_name = $_POST['user_first_name'];
+        $user_last_name = $_POST['user_last_name'];
+        $user_role = $_POST['user_role'];
+        $username = $_POST['username'];
 
+        //$post_image = $_FILES['post_image']['name'];
+        // $post_image_temp = $_FILES['post_image']['tmp_name'];
+
+        $user_email = $_POST['user_email'];
+        $user_password = $_POST['user_password'];
+
+        $query = "SELECT randSalt FROM users";
+        $select_randSalt_query = mysqli_query($dbconnect,$query);
+
+        confirm($select_randSalt_query);
+
+        $row = mysqli_fetch_array( $select_randSalt_query);
+        $salt = $row['randSalt'];
+        $hashed_password = crypt($user_password,$salt);
+
+
+//        //Don't let empty image in posts
+//        if(empty($post_image)){
+//            $query = "SELECT * FROM posts WHERE post_id = $url_user_id";
+//            $select_image = mysqli_query($dbconnect,$query);
+//
+//            while($row = mysqli_fetch_assoc($select_image)) {
+//
+//                $post_image = $row['post_image'];
+//
+//            }
+//        }
+//
+//        move_uploaded_file($post_image_temp, "../images/$post_image");
+
+        $query = "UPDATE users 
+              SET user_first_name = '{$user_first_name}',
+                  user_last_name = '{$user_last_name}',
+                  user_role = '{$user_role}',
+                  username = '{$username}',
+                  user_email  = '{$user_email}',
+                  user_password   = '{$hashed_password}'
+                  WHERE user_id = {$url_user_id}
+               
+               ";
+        $edit_user = mysqli_query($dbconnect, $query);
+
+        confirm($edit_user);
+
+        echo "<p class='bg-success'>User updated. <a href='users.php'>View Users</a></p>";
+
+
+    }
 }
 
 
@@ -54,8 +109,6 @@ if(isset($_GET['edit-user'])){
                 echo "<option value='subscriber'>subscriber</option>";
             }
 
-
-
             ?>
             </select>
         </div>
@@ -88,6 +141,3 @@ if(isset($_GET['edit-user'])){
 
 
 </form><!--End edit user-->
-<?php //===========Edit user===============
-editUser();
-?>
