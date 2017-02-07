@@ -52,5 +52,9 @@ Explanation for each file so we understand what every folder does:
 - category.php - Viewing posts for currect category only
 - functions.php - Clean, maintainable code with functions that's called when needed anywhere
 - index.php - Main page that shows all posts and we can have our navigation
-- posts.php - Showing current post from excerpt from main page
+- post.php - Showing current post from excerpt from main page
 - search.php - Search page when we submit a search at main page
+
+<h3>How to run it</h3>
+
+   Import the database tables from database tables folder in phpMyAdmin or manually. Configure the db_connect.php in includes folder accordingly since all connections to database depend on that. You are ready to go!
