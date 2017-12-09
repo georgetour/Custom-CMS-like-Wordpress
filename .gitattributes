@@ -4,6 +4,9 @@
 # Custom for Visual Studio
 *.cs     diff=csharp
 
+* linguist-vendored
+*.php linguist-vendored=false
+
 # Standard to msysgit
 *.doc	 diff=astextplain
 *.DOC	 diff=astextplain
