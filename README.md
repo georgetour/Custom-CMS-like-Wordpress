@@ -15,13 +15,12 @@ Explanation for each file so we understand what every folder does:
     <li>css -> Our css for the admin area</li>
     <li>font-awesome -> Extra icons from font-awesome</li>
     <li>fonts -> Some extra fonts</li>
-    <li>
-        <p>includes - folder that we have our template for each circumstance</p>
-        <ul>
+     <li>includes - folder that we have our template for each circumstance
+     <ul>
             <li>add-post.php -> insert post to db </li>
             <li>add-user.php -> insert user to db </li>
             <li>admin-footer.php -> the footer of admin area which has our scripts </li>
-            <li>admin-header.php -> html head with styling and what we need to run at start like connection to db, functions etc...  </li>
+            <li>admin-header.php -> html head with styling and what we need to run at start like connection to db, functions etc...</li>
             <li>admin-navbar.php -> top and side navigation </li>
             <li>edit-categories.php -> edit a category</li>
             <li>edit-post.php -> edit a post</li>
@@ -29,7 +28,6 @@ Explanation for each file so we understand what every folder does:
             <li>view-all-comments.php -> table that shows all comments</li>
             <li>view-all-posts.php -> table that shows all posts</li>
             <li>view-all-users.php -> table that shows all users</li>
-
         </ul>
     </li>
     <li>js -> jquery, bootstrap.js, all files for the wysiwyg editor </li>
@@ -42,19 +40,20 @@ Explanation for each file so we understand what every folder does:
 
 </ul>
 <h3>Root folder - All files except the admin folder</h3>
-- css - Nothing strange our css
-- database tables - You can find the tables that will be used so you just create a new database, import them and connect to your DB
-- fonts - Extra fonts
-- images - We will insert our images 
-- includes - Files like connection to DB, navbar, footer etc so we don't repeat ourselves and just call them where we want
-- js - Javascript for the site
-- static layout template - Here you can find the responsive static layout
-- category.php - Viewing posts for currect category only
-- functions.php - Clean, maintainable code with functions that's called when needed anywhere
-- index.php - Main page that shows all posts and we can have our navigation
-- post.php - Showing current post from excerpt from main page
-- search.php - Search page when we submit a search at main page
-
+<ul>
+<li> css - Nothing strange our css  </li>
+<li> database tables - You can find the tables that will be used so you just create a new database, import them and connect to your DB </li>
+<li> fonts - Extra fonts </li>
+<li> images - We will insert our images  </li>
+<li> includes - Files like connection to DB, navbar, footer etc so we don't repeat ourselves and just call them where we want </li>
+<li> js - Javascript for the site </li>
+<li> static layout template - Here you can find the responsive static layout </li>
+<li> category.php - Viewing posts for currect category only </li>
+<li> functions.php - Clean, maintainable code with functions that's called when needed anywhere </li>
+<li> index.php - Main page that shows all posts and we can have our navigation </li>
+<li> post.php - Showing current post from excerpt from main page </li>
+<li> search.php - Search page when we submit a search at main page </li>
+</ul>
 <h3>How to run it</h3>
 
    Import the database tables from database tables folder in phpMyAdmin or manually. Configure the db_connect.php in includes folder accordingly since all connections to database depend on that. You are ready to go!
